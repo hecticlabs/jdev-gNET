@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jDev gNET - Demo</title>
+
+    <style>
+        #chatbox {
+            height: 400px;
+            width: 177px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="chatline" onchange="send()">
+
+    <script src="gnet.min.js"></script>
+    <script>
+        gNET.connect('__demo__', "User #" + (Math.random() * 10000).toFixed(0), 'ws://localhost:5000/gnet/');
+        gNET.on('client/packet', ({data, source}) => {
+            // This runs in the host
+            console.log(`Client "${source}" sent`, data);
+            gNET.broadcast(`${source}: ${data}`);
+        });
+        gNET.on('host/packet', ({data}) => {
+            // This runs in the client
+            console.log(`Host sent`, data);
+            document.getElementById('chatbox').innerText += data + "\n";
+        });
+
+        function send() {
+            gNET.send(document.getElementById('chatline').value);
+            document.getElementById('chatline').value = "";
+        }
+    </script>
+</body>
+</html>
