@@ -1,4 +1,4 @@
-# gNET protol #
+# gNET protocol #
 *jDev gNET* is built on top of WebSockets, it uses the JSON format when communicating.
 
 The server-client architecture is a *kind of Peer-to-peer* tunnel through our servers.
