@@ -20,7 +20,8 @@
 
     <script src="gnet.min.js"></script>
     <script>
-        gNET.connect('__demo__', "User #" + (Math.random() * 10000).toFixed(0), 'ws://localhost:5000/gnet/');
+        gNET.connect('__demo__', "User #" + (Math.random() * 10000).toFixed(0));
+        //gNET.local("User #" + (Math.random() * 10000).toFixed(0));
         gNET.on('client/packet', ({data, source}) => {
             // This runs in the host
             console.log(`Client "${source}" sent`, data);
