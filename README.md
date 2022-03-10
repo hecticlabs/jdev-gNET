@@ -1,3 +1,8 @@
+# ⚠️ REPLACED by BroadcastWS ⚠️
+>Repository at https://github.com/JanCraft/broadcast-ws.
+> <br>
+> (public server at <ins>**wss://relay.jdev.com.es/**</ins>)
+
 # gNET protocol #
 *jDev gNET* is built on top of WebSockets, it uses the JSON format when communicating.
 
